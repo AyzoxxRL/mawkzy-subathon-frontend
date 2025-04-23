@@ -1,0 +1,13 @@
+@import '../../styles/index.scss';
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 5rem; // Make space for the fixed header
+  min-height: calc(100vh - 5rem); // Account for the header height
+} 

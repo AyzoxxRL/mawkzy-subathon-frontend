@@ -1,0 +1,215 @@
+@import '../../styles/index.scss';
+
+.footer {
+  position: relative;
+  background: linear-gradient(135deg, 
+    var(--color-footer-bg-1) 0%, 
+    var(--color-footer-bg-2) 100%);
+  color: var(--color-footer-text);
+  
+  // Vagues du footer
+  .footer-waves {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+    
+    svg {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100px;
+    }
+    
+    .shape-fill {
+      fill: var(--color-footer-bg-1);
+      filter: drop-shadow(0 -5px 5px rgba(0, 0, 0, 0.05));
+    }
+  }
+  
+  // Contenu principal du footer
+  .footer-content {
+    padding: 4rem 0 3rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    @media (min-width: 1024px) {
+      grid-template-columns: 2fr 1fr 2fr;
+      gap: 3rem;
+    }
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: var(--color-footer-heading);
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(to right, 
+        var(--color-primary), 
+        var(--color-secondary));
+      border-radius: 3px;
+    }
+  }
+  
+  // Section À propos
+  .footer-about {
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+      
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--color-footer-text);
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: var(--color-primary);
+          color: white;
+          box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4);
+        }
+      }
+    }
+  }
+  
+  // Section Liens rapides
+  .footer-links {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li {
+        margin-bottom: 0.8rem;
+        
+        a {
+          color: var(--color-footer-text);
+          text-decoration: none;
+          transition: all 0.3s ease;
+          display: inline-block;
+          opacity: 0.9;
+          
+          &:hover {
+            color: var(--color-primary);
+            opacity: 1;
+          }
+          
+          &::before {
+            content: '›';
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+  
+  // Section Newsletter
+  .footer-newsletter {
+    p {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      margin-bottom: 1rem;
+      
+      input {
+        flex: 1;
+        padding: 0.8rem 1rem;
+        border: none;
+        border-radius: 6px 0 0 6px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--color-footer-text);
+        font-size: 0.95rem;
+        
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.5);
+        }
+        
+        &:focus {
+          outline: none;
+          background-color: rgba(255, 255, 255, 0.15);
+        }
+      }
+      
+      button {
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 0 6px 6px 0;
+        background: linear-gradient(to right, 
+          var(--color-primary), 
+          var(--color-secondary));
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4);
+        }
+      }
+    }
+  }
+  
+  // Pied de page
+  .footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem 0;
+    text-align: center;
+    
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      
+      .heart-icon {
+        color: var(--color-heart);
+        margin: 0 5px;
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+        font-size: 1rem;
+      }
+    }
+  }
+} 

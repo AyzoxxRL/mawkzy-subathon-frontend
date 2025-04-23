@@ -1,0 +1,163 @@
+@import '../../styles/index.scss';
+
+.memory-card {
+  background-color: var(--color-card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 
+    0 5px 15px rgba(0, 0, 0, 0.05),
+    0 1px 5px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  
+  &.hovered {
+    box-shadow: 
+      0 15px 30px rgba(0, 0, 0, 0.1),
+      0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .memory-card-content {
+    padding: 1.8rem;
+    position: relative;
+    background: linear-gradient(
+      145deg,
+      var(--color-card-bg) 0%,
+      var(--color-card-bg-accent) 100%
+    );
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    backface-visibility: hidden;
+  }
+  
+  .quote-marks {
+    color: var(--color-primary);
+    opacity: 0.2;
+    font-size: 1.2rem;
+    position: absolute;
+    transition: all 0.3s ease;
+    
+    &.left {
+      top: 1.2rem;
+      left: 1.2rem;
+    }
+    
+    &.right {
+      bottom: 3.5rem;
+      right: 1.2rem;
+    }
+  }
+  
+  .hovered .quote-marks {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+  
+  .memory-message {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+    flex: 1;
+  }
+  
+  .memory-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 1rem;
+    
+    .memory-info {
+      display: flex;
+      flex-direction: column;
+      
+      .memory-author {
+        font-weight: bold;
+        color: var(--text-primary);
+        margin-bottom: 0.2rem;
+      }
+      
+      .memory-date {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.3rem;
+      }
+      
+      .clip-link {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: var(--color-primary);
+        text-decoration: none;
+        margin-top: 0.3rem;
+        transition: all 0.2s ease;
+        
+        svg {
+          margin-right: 0.4rem;
+          font-size: 0.8rem;
+        }
+        
+        &:hover {
+          color: var(--color-secondary);
+          text-decoration: underline;
+        }
+      }
+    }
+    
+    .memory-likes {
+      display: flex;
+      align-items: center;
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+      padding: 0.5rem 0.8rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background-color: rgba(var(--color-primary-rgb), 0.2);
+      }
+      
+      .heart-icon {
+        color: var(--color-heart);
+        margin-right: 0.4rem;
+      }
+      
+      span {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+    }
+  }
+  
+  .card-glare {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.8),
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 2;
+    mix-blend-mode: overlay;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    transform: none !important;
+    transition: box-shadow 0.3s ease;
+    
+    .card-glare {
+      display: none;
+    }
+  }
+} 

@@ -1,0 +1,187 @@
+// Thèmes et effets visuels 
+@use "sass:color";
+@use "sass:math";
+
+// Variables de thème
+:root {
+  // Thème clair par défaut
+  --primary-hue: 265;  // Twitch purple
+  --primary-saturation: 60%;
+  --primary-lightness: 45%;
+  
+  --primary-color: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-lightness));
+  --primary-color-light: hsl(var(--primary-hue), calc(var(--primary-saturation) - 10%), calc(var(--primary-lightness) + 15%));
+  --primary-color-dark: hsl(var(--primary-hue), var(--primary-saturation), calc(var(--primary-lightness) - 10%));
+  
+  --secondary-hue: 265;
+  --secondary-saturation: 70%;
+  --secondary-lightness: 70%;
+  --secondary-color: hsl(var(--secondary-hue), var(--secondary-saturation), var(--secondary-lightness));
+  
+  --accent-hue: 285;
+  --accent-saturation: 85%;
+  --accent-lightness: 65%;
+  --accent-color: hsl(var(--accent-hue), var(--accent-saturation), var(--accent-lightness));
+  
+  --success-color: #38a169; // Green
+  --warning-color: #eb8a0c; // Orange/Yellow
+  --error-color: #e53e3e; // Red
+  --heart-color: #f23a57; // Rouge vif pour le coeur
+  
+  // Couleurs de background & texte (mode clair)
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f1f3f5;
+  --bg-input: #f1f3f5;
+  --bg-secondary-hover: #e9ecef;
+  
+  --color-card-bg: #ffffff;
+  --color-card-bg-accent: #f8f9fa;
+  --color-feature-hover: #f8f9fb;
+  
+  --text-primary: #111111;
+  --text-secondary: #333333;
+  --text-tertiary: #555555;
+  --text-placeholder: #777777;
+  
+  // Couleurs du footer
+  --color-footer-bg-1: #2c2f33; // Discord dark
+  --color-footer-bg-2: #1e2124; // Discord darker
+  --color-footer-text: rgba(255, 255, 255, 0.9);
+  --color-footer-heading: #ffffff;
+  
+  // Effets
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-elevation-low: 0 2px 4px var(--shadow-color);
+  --shadow-elevation-medium: 0 4px 8px var(--shadow-color);
+  --shadow-elevation-high: 0 8px 16px var(--shadow-color);
+  
+  // Bordures
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-width: 1px;
+  --border-color: rgba(0, 0, 0, 0.1);
+  
+  // Animations
+  --transition-slow: 0.5s ease;
+  --transition-medium: 0.3s ease;
+  --transition-fast: 0.2s ease;
+  
+  // Timeline
+  --timeline-line-color: var(--primary-color);
+  --timeline-dot-size: 16px;
+  --timeline-line-width: 4px;
+  
+  // Glass morphism
+  --glass-bg: rgba(255, 255, 255, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: 8px;
+  
+  // Utilitaires de conversion pour animation JS
+  --primary-color-rgb: #{red(#6441a5)}, #{green(#6441a5)}, #{blue(#6441a5)};
+  --secondary-color-rgb: #{red(#b9a3e3)}, #{green(#b9a3e3)}, #{blue(#b9a3e3)};
+  --accent-color-rgb: #{red(#9147ff)}, #{green(#9147ff)}, #{blue(#9147ff)};
+  --success-rgb: #{red(#38a169)}, #{green(#38a169)}, #{blue(#38a169)};
+  --color-heart: var(--heart-color);
+  --color-bg-rgb: 255, 255, 255;
+}
+
+// Classe pour le thème sombre
+.dark-theme {
+  // Ajustements pour le thème sombre
+  --primary-lightness: 60%;
+  --secondary-lightness: 65%;
+  
+  // Couleurs de background & texte (mode sombre)
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-tertiary: #252525;
+  --bg-input: #2a2a2a;
+  --bg-secondary-hover: #333333;
+  
+  --color-card-bg: #1e1e1e;
+  --color-card-bg-accent: #252525;
+  --color-feature-hover: #2a2a2a;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #eeeeee;
+  --text-tertiary: #cccccc;
+  --text-placeholder: #999999;
+  
+  // Couleurs du footer
+  --color-footer-bg-1: #121212; 
+  --color-footer-bg-2: #1a1a1a;
+  
+  // Effets
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  
+  // Bordures
+  --border-color: rgba(255, 255, 255, 0.15);
+  
+  // Glass morphism
+  --glass-bg: rgba(0, 0, 0, 0.3);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  
+  // Utilitaires de conversion pour animation JS
+  --color-bg-rgb: 18, 18, 18;
+}
+
+// Animations
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(var(--primary-color-rgb), 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(var(--primary-color-rgb), 0.8);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+// Mixins pour effets avancés
+@mixin glass-morphism {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@mixin gradient-text($start-color: var(--primary-color), $end-color: var(--accent-color)) {
+  background: linear-gradient(90deg, $start-color, $end-color);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+} 

@@ -1,0 +1,265 @@
+// Breakpoints
+$breakpoint-xs: 480px;
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Mixins pour les media queries
+@mixin xs {
+  @media (max-width: #{$breakpoint-xs}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (max-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (max-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (max-width: #{$breakpoint-xxl}) {
+    @content;
+  }
+}
+
+// Mixins for up/down media queries
+@mixin media-up($breakpoint) {
+  @if $breakpoint == xs {
+    @media (min-width: #{$breakpoint-xs}) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (min-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: #{$breakpoint-md}) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  } @else if $breakpoint == xxl {
+    @media (min-width: #{$breakpoint-xxl}) {
+      @content;
+    }
+  }
+}
+
+@mixin media-down($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: #{$breakpoint-xs - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == sm {
+    @media (max-width: #{$breakpoint-sm - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: #{$breakpoint-md - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: #{$breakpoint-lg - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (max-width: #{$breakpoint-xl - 1px}) {
+      @content;
+    }
+  } @else if $breakpoint == xxl {
+    @media (max-width: #{$breakpoint-xxl - 1px}) {
+      @content;
+    }
+  }
+}
+
+// Pour les appareils mobiles en orientation portrait
+@mixin portrait {
+  @media (max-width: #{$breakpoint-md}) and (orientation: portrait) {
+    @content;
+  }
+}
+
+// Pour les tablettes en orientation paysage
+@mixin landscape {
+  @media (max-width: #{$breakpoint-lg}) and (orientation: landscape) {
+    @content;
+  }
+}
+
+// Classes utilitaires responsive
+.hide-xs {
+  @include xs {
+    display: none !important;
+  }
+}
+
+.hide-sm {
+  @include sm {
+    display: none !important;
+  }
+}
+
+.hide-md {
+  @include md {
+    display: none !important;
+  }
+}
+
+.show-xs {
+  display: none !important;
+  @include xs {
+    display: block !important;
+  }
+}
+
+.show-sm {
+  display: none !important;
+  @include sm {
+    display: block !important;
+  }
+}
+
+.show-md {
+  display: none !important;
+  @include md {
+    display: block !important;
+  }
+}
+
+// Grille responsive générique
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+  
+  @include lg {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  
+  @include md {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.75rem;
+  }
+  
+  @include sm {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+  }
+  
+  @include xs {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+// Ajustements pour les containers
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  
+  @include lg {
+    max-width: 960px;
+  }
+  
+  @include md {
+    max-width: 720px;
+    padding: 0 0.75rem;
+  }
+  
+  @include sm {
+    max-width: 540px;
+    padding: 0 0.5rem;
+  }
+  
+  @include xs {
+    padding: 0 0.5rem;
+  }
+}
+
+// Ajustements pour la typographie
+html {
+  font-size: 16px;
+  
+  @include md {
+    font-size: 15px;
+  }
+  
+  @include sm {
+    font-size: 14px;
+  }
+  
+  @include xs {
+    font-size: 13px;
+  }
+}
+
+// Flexbox responsive
+.responsive-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  
+  @include md {
+    gap: 0.75rem;
+  }
+  
+  @include sm {
+    gap: 0.5rem;
+  }
+}
+
+// Gestion du padding et des marges en responsive
+.responsive-spacing {
+  padding: 2rem;
+  margin-bottom: 2rem;
+  
+  @include lg {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  @include md {
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  @include sm {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  @include xs {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+} 
