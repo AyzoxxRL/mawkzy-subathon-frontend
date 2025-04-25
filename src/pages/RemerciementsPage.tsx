@@ -148,20 +148,7 @@ const RemerciementsPage: React.FC = () => {
           <div className="message-card">
             <p className="message-intro">Cher Mawkzy,</p>
             <p>
-              Nous voulions prendre un moment pour te remercier sincèrement pour tous les instants de joie, 
-              de rire et d'émotion que tu nous as offerts pendant ton subathon. Pendant ces nombreuses heures 
-              de stream, tu as créé bien plus qu'un simple divertissement — tu as bâti une véritable communauté.
-            </p>
-            <p>
-              Tes streams ont été une source de réconfort pour beaucoup d'entre nous, un endroit où nous pouvions 
-              nous évader après une journée difficile, rire quand nous en avions besoin, et nous sentir connectés 
-              même à distance. Ta persévérance, ton authenticité et ta bonne humeur constante ont été une véritable 
-              inspiration.
-            </p>
-            <p>
-              Chaque victoire, chaque fou rire, chaque moment de panique et chaque interaction avec le chat ont créé 
-              des souvenirs que nous chérirons longtemps. Ce Memory Book n'est qu'une petite façon pour nous de te 
-              montrer combien ton dévouement et ton énergie ont compté pour nous.
+              Merci d'être là pour le subathon, tu gères de fou, on est tous derrière toi !
             </p>
             <p className="message-closing">
               Avec toute notre gratitude,<br />
